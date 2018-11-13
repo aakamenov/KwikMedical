@@ -7,6 +7,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Owin.Hosting;
+using KwikMedical.Shared;
+using Nancy.Hosting.Self;
 
 namespace Login
 {
@@ -14,11 +17,23 @@ namespace Login
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+            var hostConfig = new HostConfiguration
+            {
+                UrlReservations = new UrlReservations
+                {
+                    CreateAutomatically = true
+                },
+            };
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            using (var host = new NancyHost(hostConfig, new Uri(Services.LOGIN)))
+            {
+                host.Start();
+
+                Console.WriteLine($"Running login service on {Services.LOGIN}");
+                Console.ReadLine();
+
+                host.Stop();
+            }
+        }
     }
 }
