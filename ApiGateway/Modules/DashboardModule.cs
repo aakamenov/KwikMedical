@@ -6,6 +6,7 @@ using Nancy;
 using Nancy.Cookies;
 using Nancy.Responses;
 using RestSharp;
+using Login.Models;
 using Login.Models.Responses;
 using KwikMedical.Shared;
 using Newtonsoft.Json;
@@ -30,12 +31,13 @@ namespace ApiGateway.Modules
                 if (!result.Success)
                     return new RedirectResponse("/login");
 
+                Context.Items["user"] = result.User;
                 return null; // continue to route
             });
 
-            Get("/", _ => 
+            Get("/", _ =>
             {
-                return View["Views/Dashboard.sshtml"];
+                return View["Views/Dashboard.sshtml", Context.Items["user"]];
             });
         }
     }

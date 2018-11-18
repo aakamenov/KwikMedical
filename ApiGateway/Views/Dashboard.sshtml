@@ -32,8 +32,8 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       
-      <p class="title">Title</p>
-      <p class="subtitle">Subtitle</p>
+      <p class="title">Operator Dashboard</p>
+      <p class="subtitle">Welcome, @Model.Username</p>
       
     </div>
   </div>
