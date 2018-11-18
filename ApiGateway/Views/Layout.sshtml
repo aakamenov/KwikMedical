@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>KwikMedical</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/content/css/bulma.min.css">
+    <script defer="" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    @Partial['Partials/Header.sshtml']
+
+    @Section['Body']
+
+    @Partial['Partials/Footer.sshtml']
+</body>
+
+</html>

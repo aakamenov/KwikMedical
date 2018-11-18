@@ -15,13 +15,15 @@ namespace Login.Modules
         {
             Post("/register", async parameters => 
             {
-                var user = Request.Form["user"].Value;
-                var pass = Request.Form["pass"].Value;
+                var user = Request.Query["user"].Value;
+                var pass = Request.Query["pass"].Value;
+                var response = new UserLoginResponse();
 
                 if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
-                    return HttpStatusCode.BadRequest;
-
-                var response = new UserLoginResponse();
+                {
+                    response.Errors.Add("Please enter username and password");
+                    return new JsonResponse<UserLoginResponse>(response, new DefaultJsonSerializer(Context.Environment), Context.Environment);
+                }
 
                 if (await userStore.AddUser(user, pass))
                 {
@@ -57,8 +59,8 @@ namespace Login.Modules
 
             Post("/login", async parameters => 
             {
-                var user = Request.Form["user"].Value;
-                var pass = Request.Form["pass"].Value;
+                var user = Request.Query["user"].Value;
+                var pass = Request.Query["pass"].Value;
 
                 if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
                     return HttpStatusCode.BadRequest;

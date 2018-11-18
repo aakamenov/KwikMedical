@@ -15,8 +15,8 @@ namespace ApiGateway
         {
             clients = new Dictionary<string, RestClient>()
             {
-                { Services.LOGIN, new RestClient(Services.LOGIN) },
-                { Services.PATIENTS, new RestClient(Services.PATIENTS) }
+                { Services.LOGIN, new RestClient(Services.LOGIN + "/api") },
+                { Services.PATIENTS, new RestClient(Services.PATIENTS + "/api") }
             };
         }
 

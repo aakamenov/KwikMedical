@@ -10,7 +10,7 @@ namespace PatientsService.Modules
     {
         public PatientsModule() : base("/api")
         {
-            Get("/patient", async parameters => 
+            Get("/patient/{nhsNumber:int}", async parameters => 
             {
                 var nhsNumber = parameters.nhsNumber;
             });
