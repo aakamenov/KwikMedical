@@ -27,7 +27,7 @@ namespace Login.Modules
 
                 if (await userStore.AddUser(user, pass))
                 {
-                    response.User = userStore.GetUser(user, pass);
+                    response.User = await userStore.GetUser(user, pass);
                     response.Success = true;
                 }
                 else
