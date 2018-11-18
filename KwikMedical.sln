@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{F9D8E26B-58A7-472E-9BEF-EFC55278FDF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{F9D8E26B-58A7-472E-9BEF-EFC55278FDF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{C2BF2FF9-A1E4-40C3-9291-79794570450A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login", "Login\Login.csproj", "{C2BF2FF9-A1E4-40C3-9291-79794570450A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientsService", "PatientsService\PatientsService.csproj", "{ECA04BA0-5B83-4D4A-B028-A3FA052A4B3E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KwikMedical.Shared", "KwikMedical.Shared\KwikMedical.Shared.csproj", "{0179186A-06E8-47A0-8075-45860B8FAB50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login.Models", "Login.Models\Login.Models.csproj", "{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsService.Models", "PatientsService.Models\PatientsService.Models.csproj", "{7219AD42-8D11-4305-A766-F3207182BDD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{C2BF2FF9-A1E4-40C3-9291-79794570450A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2BF2FF9-A1E4-40C3-9291-79794570450A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2BF2FF9-A1E4-40C3-9291-79794570450A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA04BA0-5B83-4D4A-B028-A3FA052A4B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA04BA0-5B83-4D4A-B028-A3FA052A4B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA04BA0-5B83-4D4A-B028-A3FA052A4B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA04BA0-5B83-4D4A-B028-A3FA052A4B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0179186A-06E8-47A0-8075-45860B8FAB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0179186A-06E8-47A0-8075-45860B8FAB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0179186A-06E8-47A0-8075-45860B8FAB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0179186A-06E8-47A0-8075-45860B8FAB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7219AD42-8D11-4305-A766-F3207182BDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7219AD42-8D11-4305-A766-F3207182BDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7219AD42-8D11-4305-A766-F3207182BDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7219AD42-8D11-4305-A766-F3207182BDD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

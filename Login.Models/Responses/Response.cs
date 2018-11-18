@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace KwikMedical.Shared.Models.Responses
+namespace Login.Models.Responses
 {
     public abstract class Response
     {

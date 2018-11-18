@@ -31,8 +31,6 @@ namespace Login
 
                 Console.WriteLine($"Running login service on {Services.LOGIN}");
                 Console.ReadLine();
-
-                host.Stop();
             }
         }
     }

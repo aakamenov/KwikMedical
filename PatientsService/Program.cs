@@ -7,10 +7,10 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Nancy.Hosting.Self;
 using KwikMedical.Shared;
+using Nancy.Hosting.Self;
 
-namespace ApiGateway
+namespace PatientsService
 {
     public class Program
     {
@@ -24,11 +24,11 @@ namespace ApiGateway
                 },
             };
 
-            using (var host = new NancyHost(hostConfig, new Uri(Services.GATEWAY)))
+            using (var host = new NancyHost(hostConfig, new Uri(Services.PATIENTS)))
             {
                 host.Start();
 
-                Console.WriteLine($"Running API Gateway on {Services.GATEWAY}");
+                Console.WriteLine($"Running patients service on {Services.PATIENTS}");
                 Console.ReadLine();
             }
         }
