@@ -10,7 +10,8 @@ namespace Login.Infrastructure
     {
         Task<bool> AddUser(string username, string password);
         Task<AuthenticatedUser> GetUser(string username, string password);
-        Task<bool> AuthenticateUser(string token);
+        Task<AuthenticatedUser> GetUser(string token);
+        Task ExpireToken(string token);
         Task<bool> UpdateUser(User user);
     }
 }

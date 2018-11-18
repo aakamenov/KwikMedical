@@ -47,7 +47,13 @@ namespace Login.Modules
 
                 try
                 {
-                    response.Success = await userStore.AuthenticateUser(token);                    
+                    var user = await userStore.GetUser(token);
+
+                    if (user != null)
+                    {
+                        response.Success = true;
+                        response.User = user;
+                    }
                 }
                 catch(Exception e)
                 {
@@ -78,6 +84,18 @@ namespace Login.Modules
                 }
 
                 return new JsonResponse<UserLoginResponse>(response, new DefaultJsonSerializer(Context.Environment), Context.Environment);
+            });
+
+            Post("/logout", async _ => 
+            {
+                var token = Request.Query["token"].Value;
+
+                if (string.IsNullOrEmpty(token))
+                    return HttpStatusCode.BadRequest;
+
+                await userStore.ExpireToken(token);
+
+                return HttpStatusCode.OK;
             });
         }
     }

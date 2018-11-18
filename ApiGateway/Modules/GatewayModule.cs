@@ -15,9 +15,12 @@ namespace ApiGateway.Modules
     {
         public GatewayModule(ClientFactory clientFactory)
         {
-            Get("", _ => 
+            Get("", async _ => 
             {
-                return View["Views/Home.sshtml", Authenticate()];
+                if (Request.Cookies.ContainsKey("token"))
+                    return await Response.AsRedirect("/dashboard");
+
+                return View["Views/Home.sshtml"];
             });
 
             Get("/register", _ => 
@@ -39,7 +42,7 @@ namespace ApiGateway.Modules
 
                 if (model.Success)
                 {
-                    return await Response.AsRedirect("/").WithCookie(new NancyCookie("token", model.User.Token));
+                    return await Response.AsRedirect("/dashboard").WithCookie(new NancyCookie("token", model.User.Token));
                 }
                 else
                 {
@@ -66,7 +69,7 @@ namespace ApiGateway.Modules
                 
                 if (model.Success)
                 {
-                    return await Response.AsRedirect("/").WithCookie(new NancyCookie("token", model.User.Token));
+                    return await Response.AsRedirect("/dashboard").WithCookie(new NancyCookie("token", model.User.Token));
                 }
                 else
                 {
@@ -74,19 +77,20 @@ namespace ApiGateway.Modules
                 }
             });
 
-            AuthResponse Authenticate()
+            Get("/logout", async _ => 
             {
                 if (!Request.Cookies.ContainsKey("token"))
-                    return new AuthResponse();
+                    return await Response.AsRedirect("/");
 
+                var token = Request.Cookies["token"];
+                var request = new RestRequest("/logout", Method.POST);
+                request.AddQueryParameter("token", token);
 
-                var request = new RestRequest("/auth", Method.POST);
-                request.AddQueryParameter("token", Request.Cookies["token"]);
+                var response = clientFactory.GetClient(Services.LOGIN).Execute<UserLoginResponse>(request);
+                Request.Cookies.Remove("token");
 
-                var response = clientFactory.GetClient(Services.LOGIN).Execute(request, Method.POST);
-
-                return JsonConvert.DeserializeObject<AuthResponse>(response.Content);
-            }
+                return await Response.AsRedirect("/");
+            });
         }          
     }
 }

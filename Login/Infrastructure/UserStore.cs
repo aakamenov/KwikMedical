@@ -47,9 +47,32 @@ namespace Login.Infrastructure
             return tcs.Task;
         }
 
-        public Task<bool> AuthenticateUser(string token)
+        public Task ExpireToken(string token)
         {
-            var tcs = new TaskCompletionSource<bool>();
+            return Task.Factory.StartNew(() => 
+            {
+                lock (@lock)
+                {
+                    using (var db = new LiteDatabase(DB_NAME))
+                    {
+                        var users = db.GetCollection<User>();
+
+                        var query = Query.Contains("Token", token);
+                        var user = users.FindOne(query);
+
+                        if (user is null)
+                            return;
+
+                        user.TokenExpirationDate = DateTime.Now;
+                        UpdateUserPriv(user);
+                    }
+                }
+            });
+        }
+
+        public Task<AuthenticatedUser> GetUser(string token)
+        {
+            var tcs = new TaskCompletionSource<AuthenticatedUser>();
 
             lock(@lock)
             {
@@ -61,11 +84,11 @@ namespace Login.Infrastructure
                     var user = users.FindOne(query);
 
                     if (user is null)
-                        tcs.SetResult(false);
+                        tcs.SetResult(null);
                     else if (user.TokenExpirationDate < DateTime.Now)
                         tcs.SetException(new Exception("Token expired!"));
                     else
-                        tcs.SetResult(true);
+                        tcs.SetResult(new AuthenticatedUser(user.Username, user.Token));
                 }
             }
 

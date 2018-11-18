@@ -8,5 +8,6 @@ namespace Login.Models.Responses
     public class AuthResponse : Response
     {
         public bool Success { get; set; }
+        public AuthenticatedUser User { get; set; }
     }
 }

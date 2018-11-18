@@ -1,0 +1,27 @@
+﻿<nav class="navbar" role="navigation" aria-label="main navigation">
+  
+  <div class="navbar-brand">
+    
+    <div class="navbar-item">     
+      <a class="has-text-dark has-text-weight-bold" href="/">KwikMedical</a>
+    </div>
+    
+  </div>
+
+  <div class="navbar-menu">
+    
+	<div class="navbar-end">
+	  <div class="navbar-item">
+		  <div class="buttons">
+            
+			  <a class="button" href="/register">Sign up</a>
+            
+			  <a class="button is-primary" href="/login">
+				  <strong>Log in</strong>
+			  </a>
+            
+		  </div>
+	  </div>
+	</div>
+    
+</nav>

@@ -13,11 +13,10 @@
 </head>
 
 <body>
-    @Partial['Partials/Header.sshtml']
-
     @Section['Body']
 
     @Partial['Partials/Footer.sshtml']
 </body>
+<script src="/content/js/main.js"></script>
 
 </html>

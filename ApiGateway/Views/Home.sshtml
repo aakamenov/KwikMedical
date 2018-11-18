@@ -1,6 +1,8 @@
 ﻿@Master['Layout.sshtml']
 
 @Section['Body']
+@Partial['Partials/NavbarHome.sshtml']
+
 <section class="hero is-link is-fullheight-with-navbar">
     <div class="hero-body">
         <div class="container">
