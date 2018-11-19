@@ -1,14 +1,18 @@
 ﻿@Master['Layout.sshtml']
 
 @Section['Body']
+@Partial['Partials/NavbarHome.sshtml']
 <section class="section">
 	<div class="container">
 
-		@Each.Errors
-		  <div class="notification is-danger">
-			@Current
-		  </div>
-		@EndEach
+		@IfNot.Success
+			@Each.Errors
+			  <div class="notification is-danger">
+				@Current
+			  </div>
+			@EndEach
+		@EndIf
+
 		<form method="post" action="/login">
 
 			<div class="field">

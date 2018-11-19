@@ -1,0 +1,115 @@
+﻿@Master['Layout.sshtml']
+
+@Section['Body']
+<section class="hero is-info is-fullheight">
+  
+  <div class="hero-head">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+      <div class="navbar-brand">
+
+        <div class="navbar-item">
+          <a class="has-text-white has-text-weight-bold" href="/">KwikMedical</a>
+        </div>
+
+      </div>
+
+	 <div class="navbar-end">
+	  <div class="navbar-item">
+		  <div class="buttons">           
+            
+			  <a id="logout" class="button is-warning" href="/logout">
+				  <strong>Log out</strong>
+			  </a>
+            
+		  </div>
+	  </div>
+	</div>
+
+    </nav>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      
+      <p class="title">Operator Dashboard</p>
+      <p class="subtitle">Welcome, @Model.User.Username</p>
+      
+    </div>
+  </div>
+
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+
+        <ul>
+          <li class="is-active">
+            <a href="/dashboard/emergency#form">Submit Emergency Request</a>
+          </li>
+
+          <li>
+            <a href="/dashboard/search/nhs#form">Find patient by NHS number</a>
+          </li>
+
+          <li>
+            <a href="/dashboard/search/name#form">Search patients</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+  </div>
+
+</section>
+
+<section class="section" id="form">
+	<div class="container">
+		<h1 class="is-size-2">New Emergency</h1>
+
+		<form action="/dashboard/emergency" method="post">
+			<div class="field">
+			  <label class="label">Name</label>
+			  <div class="control">
+				<input name="name" class="input" type="text" placeholder="Name" required>
+			  </div>
+			</div>
+
+			<div class="field">
+			  <label class="label">Surname</label>
+			  <div class="control">
+				<input name="surname" class="input" type="text" placeholder="Surname" required>
+			  </div>
+			</div>
+
+			<div class="field">
+				<label class="label">NHS Number</label>
+				<div class="control">
+				<input name="nhsNumber" class="input" type="text" placeholder="NSH Number" required>
+				</div>
+			</div>
+
+			<div class="field">
+			  <label class="label">Address</label>
+			  <div class="control">
+				<input name="address" class="input" type="text" placeholder="Address" required>
+			  </div>
+			</div>
+
+			<div class="field">
+			  <label class="label">Medical Description</label>
+			  <div class="control">
+				<textarea name="medicalDescription" class="textarea" placeholder="Description..." required></textarea>
+			  </div>
+			</div>
+
+			<div class="field">
+				<p class="control">
+					<button class="button is-success">Submit</button>
+				</p>
+			</div>
+
+		</form>
+	</div>
+</section>
+
+@EndSection

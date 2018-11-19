@@ -25,7 +25,7 @@ namespace ApiGateway.Modules
 
             Get("/register", _ => 
             {
-                return View["Views/Register.sshtml"];
+                return View["Views/Register.sshtml", new UserLoginResponse()];
             });
 
             Post("/register", async _ => 
@@ -52,7 +52,7 @@ namespace ApiGateway.Modules
 
             Get("/login", _ =>
             {
-                return View["Views/Login.sshtml"];
+                return View["Views/Login.sshtml", new UserLoginResponse()];
             });
 
             Post("/login", async _ =>

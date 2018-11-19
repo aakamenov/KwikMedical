@@ -51,23 +51,21 @@ namespace PatientsService.Infrastructure
                     var patients = db.GetCollection<PatientRecord>();
 
                     var existsQuery = Query.Contains("NHSNumber", nhsNumber);
-                    var patient = patients.FindOne(existsQuery);
 
-                    if (patient is null)
-                    {
-                        tcs.SetException(new Exception("Patient not found!"));
-                    }
-                    else
-                        tcs.SetResult(patient);
+                    var patient = patients.FindOne(existsQuery);
+                    tcs.SetResult(patient);
                 }
             }
 
             return tcs.Task;
         }
 
-        public Task<bool> UpdatePatient(PatientRecord patient)
+        public async Task<bool> UpdatePatient(PatientRecord patient)
         {
-            var tcs = new TaskCompletionSource<bool>();
+            var record = await GetPatient(patient.NHSNumber);
+
+            if(record is null)
+                return false;
 
             lock (@lock)
             {
@@ -75,11 +73,9 @@ namespace PatientsService.Infrastructure
                 {
                     var patients = db.GetCollection<PatientRecord>();
 
-                    tcs.SetResult(patients.Update(patient));
+                    return patients.Update(record);
                 }
             }
-
-            return tcs.Task;
         }
     }
 }

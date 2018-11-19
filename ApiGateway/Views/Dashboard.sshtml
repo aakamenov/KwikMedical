@@ -1,65 +1,7 @@
 ﻿@Master['Layout.sshtml']
 
 @Section['Body']
-<section class="hero is-info is-fullheight">
-  
-  <div class="hero-head">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
 
-      <div class="navbar-brand">
-
-        <div class="navbar-item">
-          <a class="has-text-white has-text-weight-bold" href="/">KwikMedical</a>
-        </div>
-
-      </div>
-
-	 <div class="navbar-end">
-	  <div class="navbar-item">
-		  <div class="buttons">           
-            
-			  <a id="logout" class="button is-warning" href="/logout">
-				  <strong>Log out</strong>
-			  </a>
-            
-		  </div>
-	  </div>
-	</div>
-
-    </nav>
-  </div>
-
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      
-      <p class="title">Operator Dashboard</p>
-      <p class="subtitle">Welcome, @Model.Username</p>
-      
-    </div>
-  </div>
-
-  <div class="hero-foot">
-    <nav class="tabs is-boxed is-fullwidth">
-      <div class="container">
-
-        <ul>
-          <li class="is-active">
-            <a>Submit Emergency Request</a>
-          </li>
-
-          <li>
-            <a>Find patient by NHS number</a>
-          </li>
-
-          <li>
-            <a>Search patients</a>
-          </li>
-        </ul>
-
-      </div>
-    </nav>
-  </div>
-
-</section>  
+@Partial['Partials/NavbarDashboard.sshtml']
 
 @EndSection

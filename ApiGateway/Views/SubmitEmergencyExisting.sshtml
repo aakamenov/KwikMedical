@@ -1,0 +1,30 @@
+﻿@Master['Layout.sshtml']
+
+@Section['Body']
+
+@Partial['Partials/NavbarDashboard.sshtml']
+
+<section class="section" id="form">
+	<div class="container">
+		<h1 class="is-size-2">New Emergency for patient @Model.PatientRecord.Name @Model.PatientRecord.Surname</h1>
+
+		<form action="/dashboard/emergency/@Model.PatientRecord.NHSNumber" method="post">
+
+			<div class="field">
+			  <label class="label">Medical Description</label>
+			  <div class="control">
+				<textarea name="medicalDescription" class="textarea" placeholder="Description..." required>@Model.PatientRecord.MedicalDescription</textarea>
+			  </div>
+			</div>
+
+			<div class="field">
+				<p class="control">
+					<button class="button is-success">Submit</button>
+				</p>
+			</div>
+
+		</form>
+	</div>
+</section>
+
+@EndSection

@@ -1,0 +1,31 @@
+﻿@Master['Layout.sshtml']
+
+@Section['Body']
+@Partial['Partials/NavbarDashboard.sshtml']
+
+<section class="section" id="results">
+	<div class="container">
+
+		@Each.Results
+			<div class="card">
+
+			  <div class="card-content">
+				<p class="title">@Current.Name @Current.Surname</p>
+				<p>NHS Number: <strong>@Current.NHSNumber</strong></p>
+				</br>
+				<p class="subtitle">@Current.MedicalDescription</p>
+			  </div>
+
+			  <footer class="card-footer">
+				<div class="card-footer-item">
+					<a class="button is-danger" href="/dashboard/emergency/@Current.NHSNumber#form">Submit Emergency</a>
+				</div>
+			  </footer>
+
+			</div>
+		@EndEach
+
+	</div>
+</section>
+
+@EndSection
