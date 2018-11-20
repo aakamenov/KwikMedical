@@ -1,7 +1,7 @@
 ﻿using Nancy.Owin;
 using Owin;
 
-namespace Login
+namespace EmergencyRequestDispatchService
 {
     public class Startup
     {

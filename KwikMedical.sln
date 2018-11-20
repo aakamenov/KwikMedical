@@ -13,7 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KwikMedical.Shared", "KwikM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login.Models", "Login.Models\Login.Models.csproj", "{9DEE4588-6E52-41F2-A4F3-3B57E005EFE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsService.Models", "PatientsService.Models\PatientsService.Models.csproj", "{7219AD42-8D11-4305-A766-F3207182BDD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientsService.Models", "PatientsService.Models\PatientsService.Models.csproj", "{7219AD42-8D11-4305-A766-F3207182BDD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmergencyRequestDispatchService", "EmergencyRequestDispatchService\EmergencyRequestDispatchService.csproj", "{6A66EAB6-0BD3-4F0B-ABE5-F3DC62224B47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalsService", "HospitalsService\HospitalsService.csproj", "{A4B6F977-2EBE-4020-8444-EC85544949C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmbulanceDispatchService", "AmbulanceDispatchService\AmbulanceDispatchService.csproj", "{0A4D8604-BDED-48AA-BBA2-B99D55F0C9B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalsService.Models", "HospitalsService.Models\HospitalsService.Models.csproj", "{1CE43489-6762-4C98-84BE-00EF8E171C51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +53,22 @@ Global
 		{7219AD42-8D11-4305-A766-F3207182BDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7219AD42-8D11-4305-A766-F3207182BDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7219AD42-8D11-4305-A766-F3207182BDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A66EAB6-0BD3-4F0B-ABE5-F3DC62224B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A66EAB6-0BD3-4F0B-ABE5-F3DC62224B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A66EAB6-0BD3-4F0B-ABE5-F3DC62224B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A66EAB6-0BD3-4F0B-ABE5-F3DC62224B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B6F977-2EBE-4020-8444-EC85544949C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B6F977-2EBE-4020-8444-EC85544949C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B6F977-2EBE-4020-8444-EC85544949C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B6F977-2EBE-4020-8444-EC85544949C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A4D8604-BDED-48AA-BBA2-B99D55F0C9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A4D8604-BDED-48AA-BBA2-B99D55F0C9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A4D8604-BDED-48AA-BBA2-B99D55F0C9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A4D8604-BDED-48AA-BBA2-B99D55F0C9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE43489-6762-4C98-84BE-00EF8E171C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE43489-6762-4C98-84BE-00EF8E171C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE43489-6762-4C98-84BE-00EF8E171C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE43489-6762-4C98-84BE-00EF8E171C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

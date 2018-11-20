@@ -48,8 +48,32 @@ namespace ApiGateway.Modules
                 return View["Views/SubmitEmergency.sshtml", new DashboardViewModel(Context.Items["user"] as AuthenticatedUser)];
             });
 
-            Post("/emergency", _ => 
+            Post("/emergency", async _ => 
             {
+                var patient = new PatientRecord()
+                {
+                    Name = Request.Form["name"].Value,
+                    Surname = Request.Form["surname"].Value,
+                    Address = Request.Form["address"].Value,
+                    NHSNumber = Request.Form["nhsNumber"].Value,
+                    MedicalDescription = Request.Form["medicalDescription"].Value,
+                };
+
+                var request = new RestRequest("/patient", Method.POST);
+                request.AddJsonBody(patient);
+                var response = clientFactory.GetClient(Services.PATIENTS).Execute(request, Method.POST);
+                var addResult = JsonConvert.DeserializeObject<AddPatientResponse>(response.Content);
+
+                if(!addResult.Success)
+                    return $"Patient with number {patient.NHSNumber} already exists!";
+
+                var dispatchRequest = new RestRequest("/dispatch", Method.POST);
+                dispatchRequest.AddJsonBody(patient);
+                var dispatchResponse = clientFactory.GetClient(Services.DISPATCH).Execute(dispatchRequest, Method.POST);
+
+                if (dispatchResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                    return await Response.AsRedirect("/dashboard");
+
                 return HttpStatusCode.InternalServerError;
             });
 
@@ -61,14 +85,39 @@ namespace ApiGateway.Modules
                 return View["Views/SubmitEmergencyExisting.sshtml", vm];
             });
 
-            Post("/emergency/{nhsNumber}", _ =>
+            Post("/emergency/{nhsNumber}", async parameters =>
             {
+                var nhsNumber = parameters.nhsNumber.Value;
+                var description = Request.Form["medicalDescription"].Value;
+
+                var patient = GetPatient(nhsNumber);
+                patient.MedicalDescription = description;
+
+                var request = new RestRequest("/patient", Method.PUT);
+                request.AddJsonBody(patient);
+                var response = clientFactory.GetClient(Services.PATIENTS).Execute(request, Method.PUT);
+
+                var dispatchRequest = new RestRequest("/dispatch", Method.POST);
+                dispatchRequest.AddJsonBody(patient);
+                var dispatchResponse = clientFactory.GetClient(Services.DISPATCH).Execute(dispatchRequest, Method.POST);
+
+                if (dispatchResponse.StatusCode == System.Net.HttpStatusCode.OK &&
+                    response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return await Response.AsRedirect("/dashboard");
+                }
+
                 return HttpStatusCode.InternalServerError;
             });
 
             Get("/search/nhs", _ => 
             {
                 return View["Views/SearchByNhs.sshtml", new DashboardViewModel(Context.Items["user"] as AuthenticatedUser)];
+            });
+
+            Get("/search/name", _ =>
+            {
+                return "Coming soon!";
             });
 
             Get("/search/results", _ => 

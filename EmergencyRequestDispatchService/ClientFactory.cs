@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using RestSharp;
 using KwikMedical.Shared;
 
-namespace ApiGateway
+namespace EmergencyRequestDispatchService
 {
     public class ClientFactory
     {
@@ -15,9 +15,9 @@ namespace ApiGateway
         {
             clients = new Dictionary<string, RestClient>()
             {
-                { Services.LOGIN, new RestClient(Services.LOGIN + "/api") },
                 { Services.PATIENTS, new RestClient(Services.PATIENTS + "/api") },
-                { Services.DISPATCH, new RestClient(Services.DISPATCH + "/api") }
+                { Services.HOSPITALS, new RestClient(Services.HOSPITALS + "/api") },
+                { Services.AMBULANCE, new RestClient(Services.AMBULANCE + "/api") }
             };
         }
 
